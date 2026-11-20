@@ -1,0 +1,1214 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>飞魔幻小说网 - 官方品牌站,奇幻文学影像内容生态</title>
+<meta name="description" content="飞魔幻小说网官方网站，专注奇幻与幻想文学的品牌视频内容平台，以原创、正版、高清单品内容与创作者社区，构建值得信赖的幻想内容生态。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231a1230'/%3E%3Cpath d='M20 44 L32 14 L44 44 L32 36 Z' fill='%23b98cff'/%3E%3Ccircle cx='32' cy='30' r='4' fill='%23ffd36e'/%3E%3C/svg%3E">
+<style>
+:root{
+  --fmf-ink:#1a1230;
+  --fmf-ink-soft:#2b2148;
+  --fmf-violet:#6c3fd1;
+  --fmf-violet-lt:#b98cff;
+  --fmf-gold:#ffd36e;
+  --fmf-mist:#f4f1fb;
+  --fmf-line:#e0d9f2;
+  --fmf-text:#2c2540;
+  --fmf-muted:#6d6488;
+  --fmf-radius:16px;
+  --fmf-shadow:0 12px 34px rgba(60,32,120,.12);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:130px;}
+body{
+  margin:0;
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+  color:var(--fmf-text);
+  background:var(--fmf-mist);
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+button{font-family:inherit;cursor:pointer;}
+.fmf-wrap{max-width:1180px;margin:0 auto;padding:0 22px;}
+
+/* ===== 吸顶头部（公告条 + 页头） ===== */
+.fmf-sticky-head{position:sticky;top:0;z-index:80;}
+.fmf-notice{
+  background:linear-gradient(90deg,#2b2148,#4a2d8f 55%,#6c3fd1);
+  color:#f0e9ff;font-size:13.5px;
+}
+.fmf-notice-inner{
+  max-width:1180px;margin:0 auto;padding:8px 22px;
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+}
+.fmf-notice-tag{
+  background:var(--fmf-gold);color:#3a2a05;font-weight:700;
+  font-size:12px;padding:1px 9px;border-radius:999px;letter-spacing:.5px;white-space:nowrap;
+}
+.fmf-notice-list{display:flex;gap:22px;flex-wrap:wrap;flex:1;min-width:0;}
+.fmf-notice-list span{opacity:.94;}
+.fmf-notice-list em{font-style:normal;color:var(--fmf-gold);}
+.fmf-header{background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--fmf-line);}
+.fmf-header-inner{
+  max-width:1180px;margin:0 auto;padding:12px 22px;
+  display:flex;align-items:center;gap:22px;
+}
+.fmf-logo{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.fmf-logo-mark{
+  width:40px;height:40px;border-radius:12px;
+  background:linear-gradient(140deg,#2b2148,#6c3fd1);
+  display:grid;place-items:center;color:var(--fmf-gold);font-weight:800;font-size:19px;
+  box-shadow:0 6px 16px rgba(108,63,209,.32);
+}
+.fmf-logo-text{display:flex;flex-direction:column;line-height:1.2;}
+.fmf-logo-text b{font-size:17px;letter-spacing:.5px;color:var(--fmf-ink);}
+.fmf-logo-text small{font-size:11px;color:var(--fmf-muted);letter-spacing:1.4px;}
+.fmf-nav{margin-left:auto;display:flex;align-items:center;gap:4px;}
+.fmf-nav a{
+  padding:8px 13px;border-radius:10px;font-size:14.5px;color:var(--fmf-ink-soft);
+  transition:background .2s,color .2s;white-space:nowrap;
+}
+.fmf-nav a:hover{background:#f0ebfd;color:var(--fmf-violet);}
+.fmf-search{
+  display:flex;align-items:center;gap:6px;background:#f3effc;border:1px solid var(--fmf-line);
+  border-radius:999px;padding:5px 6px 5px 14px;min-width:200px;
+}
+.fmf-search input{
+  border:0;background:transparent;outline:none;font-size:14px;width:118px;color:var(--fmf-text);
+}
+.fmf-search button{
+  border:0;border-radius:999px;background:var(--fmf-violet);color:#fff;
+  padding:6px 14px;font-size:13.5px;transition:background .2s;
+}
+.fmf-search button:hover{background:#5527b8;}
+.fmf-nav-toggle{
+  display:none;border:1px solid var(--fmf-line);background:#fff;border-radius:10px;
+  width:42px;height:38px;font-size:18px;color:var(--fmf-ink);
+}
+.fmf-search-feedback{font-size:12.5px;color:var(--fmf-violet);padding:0 22px 8px;max-width:1180px;margin:0 auto;min-height:0;}
+.fmf-search-feedback:empty{display:none;}
+
+/* ===== 首屏 ===== */
+.fmf-hero{
+  background:
+    radial-gradient(900px 420px at 82% -8%,rgba(185,140,255,.32),transparent 62%),
+    radial-gradient(700px 380px at 4% 30%,rgba(255,211,110,.18),transparent 60%),
+    linear-gradient(165deg,#1a1230 0%,#2b2148 52%,#3b2470 100%);
+  color:#efe9ff;padding:62px 0 56px;position:relative;overflow:hidden;
+}
+.fmf-hero::after{
+  content:"";position:absolute;inset:auto -60px -120px auto;width:420px;height:420px;
+  border-radius:50%;border:1px dashed rgba(185,140,255,.35);
+}
+.fmf-hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:46px;align-items:center;position:relative;z-index:1;}
+.fmf-hero-badge{
+  display:inline-flex;align-items:center;gap:8px;font-size:12.5px;letter-spacing:1px;
+  background:rgba(185,140,255,.16);border:1px solid rgba(185,140,255,.45);
+  color:#e4d6ff;padding:5px 13px;border-radius:999px;margin-bottom:18px;
+}
+.fmf-hero-badge i{width:7px;height:7px;border-radius:50%;background:var(--fmf-gold);display:inline-block;}
+.fmf-hero h1{
+  font-size:clamp(34px,5vw,52px);line-height:1.16;margin:0 0 14px;letter-spacing:1px;
+  background:linear-gradient(96deg,#ffffff,#d8c2ff 58%,#ffd36e);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.fmf-hero-sub{font-size:16.5px;color:#c3b5e6;margin:0 0 18px;max-width:520px;}
+.fmf-hero-intro{font-size:14.8px;color:#b3a7d4;margin:0 0 26px;max-width:560px;}
+.fmf-hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:34px;}
+.fmf-btn{
+  display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:11px 24px;
+  font-size:15px;border:1px solid transparent;transition:transform .18s,box-shadow .18s,background .18s;
+}
+.fmf-btn-primary{background:linear-gradient(96deg,#b98cff,#6c3fd1);color:#fff;box-shadow:0 10px 26px rgba(120,60,230,.38);}
+.fmf-btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(120,60,230,.5);}
+.fmf-btn-ghost{background:rgba(255,255,255,.07);border-color:rgba(185,140,255,.5);color:#e7dcff;}
+.fmf-btn-ghost:hover{background:rgba(255,255,255,.15);transform:translateY(-2px);}
+.fmf-hero-stats{display:flex;gap:34px;flex-wrap:wrap;}
+.fmf-hero-stats div b{display:block;font-size:26px;color:#fff;letter-spacing:.5px;}
+.fmf-hero-stats div span{font-size:12.5px;color:#a294c6;letter-spacing:.8px;}
+
+.fmf-hero-art{position:relative;}
+.fmf-hero-art img{border-radius:20px;box-shadow:0 26px 60px rgba(0,0,0,.45);}
+.fmf-hero-float{
+  position:absolute;left:-22px;bottom:-22px;background:rgba(26,18,48,.92);
+  border:1px solid rgba(185,140,255,.45);border-radius:14px;padding:12px 18px;
+  box-shadow:0 14px 32px rgba(0,0,0,.4);font-size:13px;color:#d7c9f7;
+  backdrop-filter:blur(8px);
+}
+.fmf-hero-float b{display:block;color:var(--fmf-gold);font-size:15px;letter-spacing:.5px;}
+
+/* ===== 通用 section ===== */
+.fmf-section{padding:66px 0;}
+.fmf-section.alt{background:#fff;}
+.fmf-section-head{max-width:760px;margin:0 auto 40px;text-align:center;}
+.fmf-eyebrow{
+  display:inline-block;font-size:12.5px;letter-spacing:2.4px;color:var(--fmf-violet);
+  font-weight:700;margin-bottom:10px;text-transform:uppercase;
+}
+.fmf-section-head h2{
+  font-size:clamp(24px,3.2vw,31px);margin:0 0 12px;color:var(--fmf-ink);letter-spacing:.5px;
+}
+.fmf-section-head p{margin:0;color:var(--fmf-muted);font-size:15px;}
+
+/* ===== 关键词深度解析 ===== */
+.fmf-explain{background:#fff;}
+.fmf-explain-grid{display:grid;grid-template-columns:1fr 1fr;gap:38px;}
+.fmf-explain p{font-size:15px;color:#4a4266;margin:0 0 16px;}
+.fmf-explain h3{font-size:18px;color:var(--fmf-ink);margin:24px 0 10px;padding-left:13px;position:relative;}
+.fmf-explain h3::before{
+  content:"";position:absolute;left:0;top:6px;bottom:6px;width:4px;border-radius:4px;
+  background:linear-gradient(180deg,var(--fmf-violet),var(--fmf-gold));
+}
+.fmf-explain-cards{display:grid;gap:14px;}
+.fmf-mini-card{
+  background:linear-gradient(160deg,#faf8ff,#f1ecfd);border:1px solid var(--fmf-line);
+  border-radius:14px;padding:16px 20px;
+}
+.fmf-mini-card h4{margin:0 0 6px;font-size:15.5px;color:var(--fmf-violet);}
+.fmf-mini-card p{margin:0;font-size:14px;color:#5a5273;}
+
+/* ===== 焦点视频 ===== */
+.fmf-feature-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:26px;}
+.fmf-vcard{
+  background:#fff;border-radius:var(--fmf-radius);overflow:hidden;border:1px solid var(--fmf-line);
+  box-shadow:0 4px 16px rgba(60,32,120,.06);transition:transform .22s,box-shadow .22s;
+  display:flex;flex-direction:column;
+}
+.fmf-vcard:hover{transform:translateY(-5px);box-shadow:var(--fmf-shadow);}
+.fmf-vcard-cover{position:relative;overflow:hidden;background:#120c22;}
+.fmf-vcard-cover img{aspect-ratio:16/9;object-fit:cover;width:100%;transition:transform .4s;}
+.fmf-vcard:hover .fmf-vcard-cover img{transform:scale(1.045);}
+.fmf-vcard-tag{
+  position:absolute;left:12px;top:12px;background:rgba(26,18,48,.82);color:var(--fmf-gold);
+  font-size:12px;padding:3px 10px;border-radius:999px;letter-spacing:.6px;backdrop-filter:blur(4px);
+}
+.fmf-vcard-play{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,.9);
+  display:grid;place-items:center;color:var(--fmf-violet);font-size:17px;pointer-events:none;
+  box-shadow:0 6px 20px rgba(0,0,0,.35);
+}
+.fmf-vcard-body{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1;}
+.fmf-vcard-body h3{font-size:16.5px;margin:0 0 7px;color:var(--fmf-ink);line-height:1.45;}
+.fmf-vcard-body p{font-size:13.6px;color:var(--fmf-muted);margin:0 0 12px;flex:1;}
+.fmf-vcard-meta{
+  display:flex;align-items:center;gap:10px;font-size:12.5px;color:#8a80a6;
+  border-top:1px dashed var(--fmf-line);padding-top:11px;flex-wrap:wrap;
+}
+.fmf-vcard-meta .fmf-author{display:flex;align-items:center;gap:6px;color:var(--fmf-violet);font-weight:600;}
+.fmf-avatar{
+  width:22px;height:22px;border-radius:50%;display:grid;place-items:center;
+  font-size:11px;color:#fff;font-weight:700;flex-shrink:0;
+}
+.fmf-act{
+  border:1px solid var(--fmf-line);background:#faf8ff;border-radius:999px;
+  padding:3px 10px;font-size:12px;color:#6d6488;transition:all .18s;
+}
+.fmf-act:hover{border-color:var(--fmf-violet);color:var(--fmf-violet);}
+.fmf-act.active{background:#f0e8ff;border-color:var(--fmf-violet);color:var(--fmf-violet);}
+.fmf-act.saved{background:#fff2d8;border-color:#d99a1a;color:#a7720c;}
+.fmf-feature-side{display:flex;flex-direction:column;gap:16px;}
+.fmf-vcard.small{flex-direction:row;}
+.fmf-vcard.small .fmf-vcard-cover{width:44%;flex-shrink:0;}
+.fmf-vcard.small .fmf-vcard-cover img{height:100%;aspect-ratio:auto;}
+.fmf-vcard.small .fmf-vcard-play{width:34px;height:34px;font-size:12px;}
+.fmf-vcard.small .fmf-vcard-body{padding:13px 15px;}
+.fmf-vcard.small h3{font-size:14.5px;}
+.fmf-vcard.small p{font-size:12.8px;margin-bottom:8px;}
+
+/* ===== 视频流（瀑布/网格） ===== */
+.fmf-stream{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.fmf-tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:32px;}
+.fmf-tab{
+  border:1px solid var(--fmf-line);background:#fff;border-radius:999px;padding:7px 18px;
+  font-size:13.5px;color:#5f5780;transition:all .2s;
+}
+.fmf-tab:hover{border-color:var(--fmf-violet-lt);color:var(--fmf-violet);}
+.fmf-tab.on{background:var(--fmf-violet);border-color:var(--fmf-violet);color:#fff;box-shadow:0 6px 16px rgba(108,63,209,.3);}
+
+/* ===== 专题 ===== */
+.fmf-topic-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.fmf-topic{
+  background:#fff;border:1px solid var(--fmf-line);border-radius:var(--fmf-radius);
+  overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s;
+}
+.fmf-topic:hover{transform:translateY(-4px);box-shadow:var(--fmf-shadow);}
+.fmf-topic img{aspect-ratio:16/9;object-fit:cover;}
+.fmf-topic-body{padding:16px 18px 18px;flex:1;display:flex;flex-direction:column;}
+.fmf-topic-body h3{font-size:16px;margin:0 0 7px;color:var(--fmf-ink);}
+.fmf-topic-body p{font-size:13.5px;color:var(--fmf-muted);margin:0 0 14px;flex:1;}
+.fmf-status{
+  display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#3f7a4d;
+  background:#e8f6ec;border-radius:999px;padding:3px 11px;align-self:flex-start;margin-bottom:10px;
+}
+.fmf-status i{width:6px;height:6px;background:#3fae5c;border-radius:50%;}
+
+/* ===== 创作者 ===== */
+.fmf-creator-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.fmf-creator{
+  background:#fff;border:1px solid var(--fmf-line);border-radius:var(--fmf-radius);
+  padding:22px 18px;text-align:center;transition:transform .2s,box-shadow .2s;
+}
+.fmf-creator:hover{transform:translateY(-4px);box-shadow:var(--fmf-shadow);}
+.fmf-creator .fmf-avatar{width:62px;height:62px;font-size:23px;margin:0 auto 12px;}
+.fmf-creator h3{margin:0 0 3px;font-size:15.5px;color:var(--fmf-ink);}
+.fmf-creator .fmf-field{font-size:12.5px;color:var(--fmf-violet);margin-bottom:9px;}
+.fmf-creator p{font-size:13px;color:var(--fmf-muted);margin:0 0 12px;min-height:44px;}
+.fmf-creator-stats{display:flex;justify-content:center;gap:16px;font-size:12px;color:#8a80a6;border-top:1px dashed var(--fmf-line);padding-top:11px;}
+.fmf-creator-stats b{color:var(--fmf-ink);display:block;font-size:14px;}
+
+/* ===== 评价 ===== */
+.fmf-review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.fmf-review{
+  background:#fff;border:1px solid var(--fmf-line);border-left:4px solid var(--fmf-violet-lt);
+  border-radius:12px;padding:18px 20px;
+}
+.fmf-review:nth-child(2n){border-left-color:var(--fmf-gold);}
+.fmf-review p{font-size:13.8px;color:#4a4266;margin:0 0 12px;}
+.fmf-review-user{display:flex;align-items:center;gap:9px;font-size:12.5px;color:#7d7499;}
+.fmf-review-user .fmf-avatar{width:26px;height:26px;font-size:12px;}
+
+/* ===== 动态 ===== */
+.fmf-news{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+.fmf-news-item{
+  background:#fff;border:1px solid var(--fmf-line);border-radius:12px;padding:16px 20px;
+  display:flex;gap:16px;align-items:flex-start;transition:border-color .2s,box-shadow .2s;
+}
+.fmf-news-item:hover{border-color:var(--fmf-violet-lt);box-shadow:0 6px 18px rgba(60,32,120,.07);}
+.fmf-news-date{
+  flex-shrink:0;text-align:center;background:linear-gradient(160deg,#f3eeff,#e8e0fb);
+  border-radius:10px;padding:6px 10px;color:var(--fmf-violet);line-height:1.2;
+}
+.fmf-news-date b{display:block;font-size:17px;}
+.fmf-news-date span{font-size:11px;color:#8a80a6;}
+.fmf-news-item h3{margin:0 0 4px;font-size:14.8px;color:var(--fmf-ink);}
+.fmf-news-item p{margin:0;font-size:13px;color:var(--fmf-muted);}
+
+/* ===== FAQ ===== */
+.fmf-faq{max-width:840px;margin:0 auto;display:grid;gap:10px;}
+.fmf-faq details{
+  background:#fff;border:1px solid var(--fmf-line);border-radius:12px;
+  padding:0 20px;transition:border-color .2s;
+}
+.fmf-faq details[open]{border-color:var(--fmf-violet-lt);}
+.fmf-faq summary{
+  cursor:pointer;font-size:15px;font-weight:600;color:var(--fmf-ink);
+  padding:15px 0;list-style:none;display:flex;justify-content:space-between;gap:12px;
+}
+.fmf-faq summary::-webkit-details-marker{display:none;}
+.fmf-faq summary::after{content:"＋";color:var(--fmf-violet);font-size:15px;transition:transform .2s;}
+.fmf-faq details[open] summary::after{content:"－";}
+.fmf-faq p{margin:0 0 16px;font-size:14px;color:var(--fmf-muted);}
+
+/* ===== 联系 ===== */
+.fmf-contact{
+  background:linear-gradient(150deg,#241a42,#3b2470 60%,#5a34b8);color:#e6ddff;
+  border-radius:22px;padding:44px 38px;display:grid;grid-template-columns:1.15fr .85fr;gap:36px;
+  position:relative;overflow:hidden;
+}
+.fmf-contact::before{
+  content:"";position:absolute;right:-80px;top:-80px;width:280px;height:280px;border-radius:50%;
+  background:radial-gradient(circle,rgba(185,140,255,.4),transparent 68%);
+}
+.fmf-contact h2{font-size:26px;margin:0 0 12px;color:#fff;position:relative;}
+.fmf-contact p{font-size:14.5px;color:#bcabdf;margin:0 0 22px;position:relative;}
+.fmf-contact-btns{display:flex;gap:12px;flex-wrap:wrap;position:relative;}
+.fmf-contact-info{display:grid;gap:12px;position:relative;}
+.fmf-contact-info div{
+  background:rgba(255,255,255,.08);border:1px solid rgba(185,140,255,.3);
+  border-radius:12px;padding:12px 16px;font-size:13.5px;
+}
+.fmf-contact-info b{display:block;color:var(--fmf-gold);font-size:12px;letter-spacing:1px;margin-bottom:3px;}
+
+/* ===== 页脚 ===== */
+.fmf-footer{background:#140e26;color:#9c90bd;padding:46px 0 26px;font-size:13.5px;}
+.fmf-footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px;margin-bottom:32px;}
+.fmf-footer h4{color:#e2d8fb;font-size:14px;margin:0 0 12px;letter-spacing:.6px;}
+.fmf-footer a{display:block;padding:3px 0;color:#9c90bd;transition:color .2s;}
+.fmf-footer a:hover{color:var(--fmf-violet-lt);}
+.fmf-footer-brand b{color:#e2d8fb;font-size:16px;display:block;margin-bottom:8px;}
+.fmf-footer-brand p{margin:0 0 12px;line-height:1.7;}
+.fmf-footer-bottom{
+  border-top:1px solid rgba(255,255,255,.1);padding-top:20px;
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12.5px;color:#7c709c;
+}
+
+/* ===== 弹窗 & Toast ===== */
+.fmf-modal-mask{
+  position:fixed;inset:0;background:rgba(20,14,38,.62);backdrop-filter:blur(4px);
+  display:none;place-items:center;z-index:200;padding:20px;
+}
+.fmf-modal-mask.show{display:grid;}
+.fmf-modal{
+  background:#fff;border-radius:20px;max-width:480px;width:100%;padding:30px 28px;
+  box-shadow:0 30px 70px rgba(0,0,0,.4);position:relative;
+}
+.fmf-modal h3{margin:0 0 10px;font-size:19px;color:var(--fmf-ink);}
+.fmf-modal p{margin:0 0 18px;font-size:14px;color:var(--fmf-muted);}
+.fmf-modal-close{
+  position:absolute;right:14px;top:12px;border:0;background:transparent;font-size:20px;
+  color:#b0a6c9;line-height:1;
+}
+.fmf-modal fieldset{border:0;padding:0;margin:0 0 16px;display:grid;gap:9px;}
+.fmf-modal input,.fmf-modal textarea{
+  width:100%;border:1px solid var(--fmf-line);border-radius:10px;padding:10px 13px;
+  font-size:14px;font-family:inherit;outline:none;color:var(--fmf-text);
+}
+.fmf-modal input:focus,.fmf-modal textarea:focus{border-color:var(--fmf-violet-lt);}
+.fmf-toast{
+  position:fixed;left:50%;bottom:34px;transform:translate(-50%,20px);
+  background:#241a42;color:#f0e9ff;padding:11px 22px;border-radius:999px;font-size:14px;
+  box-shadow:0 14px 36px rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:all .28s;z-index:300;
+}
+.fmf-toast.show{opacity:1;transform:translate(-50%,0);}
+.fmf-fab{
+  position:fixed;right:24px;bottom:26px;width:46px;height:46px;border-radius:50%;
+  border:0;background:var(--fmf-violet);color:#fff;font-size:17px;box-shadow:0 10px 24px rgba(108,63,209,.45);
+  display:grid;place-items:center;opacity:0;pointer-events:none;transition:all .28s;z-index:150;
+}
+.fmf-fab.show{opacity:1;pointer-events:auto;}
+.fmf-fab:hover{background:#5527b8;transform:translateY(-3px);}
+
+/* ===== 响应式 ===== */
+@media (max-width:1000px){
+  .fmf-hero-grid,.fmf-explain-grid,.fmf-contact{grid-template-columns:1fr;}
+  .fmf-feature-grid{grid-template-columns:1fr;}
+  .fmf-stream,.fmf-topic-grid{grid-template-columns:repeat(2,1fr);}
+  .fmf-creator-grid{grid-template-columns:repeat(2,1fr);}
+  .fmf-footer-grid{grid-template-columns:1fr 1fr;}
+  .fmf-review-grid{grid-template-columns:1fr 1fr;}
+}
+@media (max-width:780px){
+  html{scroll-padding-top:186px;}
+  .fmf-nav{
+    display:none;position:absolute;left:0;right:0;top:100%;background:#fff;
+    flex-direction:column;align-items:stretch;padding:10px 18px 18px;gap:2px;
+    border-bottom:1px solid var(--fmf-line);box-shadow:0 18px 30px rgba(60,32,120,.12);
+  }
+  .fmf-nav.open{display:flex;}
+  .fmf-nav a{padding:11px 12px;}
+  .fmf-header-inner{position:relative;flex-wrap:wrap;gap:12px;}
+  .fmf-nav-toggle{display:block;margin-left:auto;}
+  .fmf-search{order:3;width:100%;min-width:0;}
+  .fmf-search input{width:100%;flex:1;}
+  .fmf-notice-list{gap:8px 18px;font-size:12.5px;}
+  .fmf-stream,.fmf-topic-grid,.fmf-creator-grid,.fmf-review-grid,.fmf-news{grid-template-columns:1fr;}
+  .fmf-hero{padding:44px 0 42px;}
+  .fmf-hero-float{left:0;bottom:-16px;font-size:12px;}
+  .fmf-section{padding:48px 0;}
+  .fmf-contact{padding:30px 22px;}
+  .fmf-footer-grid{grid-template-columns:1fr;}
+  .fmf-vcard.small{flex-direction:column;}
+  .fmf-vcard.small .fmf-vcard-cover{width:100%;}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<div class="fmf-sticky-head">
+  <div class="fmf-notice">
+    <div class="fmf-notice-inner">
+      <span class="fmf-notice-tag">官方公告</span>
+      <div class="fmf-notice-list">
+        <span><em>11月18日</em> 更新《幻境档案》第二季影像篇，原创高清画质同步上线</span>
+        <span><em>11月15日</em> 飞魔幻小说网年度创作者招募开放报名</span>
+        <span><em>11月11日</em> 品牌专题「幻想地理」新增 6 集城市奇幻短片</span>
+      </div>
+    </div>
+  </div>
+  <header class="fmf-header">
+    <div class="fmf-header-inner">
+      <a class="fmf-logo" href="#fmf-top" aria-label="飞魔幻小说网官方首页">
+        <span class="fmf-logo-mark">飞</span>
+        <span class="fmf-logo-text"><b>飞魔幻小说网</b><small>FANTASY VIDEO</small></span>
+      </a>
+      <button class="fmf-nav-toggle" id="fmfNavToggle" aria-label="展开导航" aria-expanded="false">☰</button>
+      <nav class="fmf-nav" id="fmfNav" aria-label="主导航">
+        <a href="#fmf-top">首页</a>
+        <a href="#fmf-focus">焦点内容</a>
+        <a href="#fmf-stream">视频流</a>
+        <a href="#fmf-topic">专题企划</a>
+        <a href="#fmf-creator">创作者</a>
+        <a href="#fmf-news">企业动态</a>
+        <a href="#fmf-faq">帮助</a>
+        <a href="#fmf-contact">联系</a>
+      </nav>
+      <div class="fmf-search">
+        <input id="fmfSearchInput" type="search" placeholder="搜索奇幻作品 / 创作者" aria-label="站内搜索">
+        <button id="fmfSearchBtn" type="button">搜索</button>
+      </div>
+    </div>
+    <div class="fmf-search-feedback" id="fmfSearchFeedback" aria-live="polite"></div>
+  </header>
+</div>
+
+<main id="fmf-top">
+
+  <!-- 首屏 -->
+  <section class="fmf-hero">
+    <div class="fmf-wrap fmf-hero-grid">
+      <div>
+        <span class="fmf-hero-badge"><i></i>飞魔幻小说网 · 官方网站</span>
+        <h1>飞魔幻小说网</h1>
+        <p class="fmf-hero-sub">以影像延续幻想文学的生命力，做值得信赖的奇幻视频品牌。</p>
+        <p class="fmf-hero-intro">飞魔幻小说网是深耕奇幻与幻想文学领域的原创视频品牌平台，我们以专业的内容制作与持续运营的创作者社区，把文字里的世界转化为可观看、可讨论、可参与的影像作品，构建多元包容的幻想内容生态。</p>
+        <div class="fmf-hero-actions">
+          <a class="fmf-btn fmf-btn-primary" href="#fmf-focus">进入焦点内容 →</a>
+          <a class="fmf-btn fmf-btn-ghost" href="#fmf-creator">认识创作者</a>
+          <button class="fmf-btn fmf-btn-ghost" type="button" id="fmfShareHero">分享品牌页</button>
+        </div>
+        <div class="fmf-hero-stats">
+          <div><b>2,180+</b><span>原创影像作品</span></div>
+          <div><b>36.5万</b><span>注册用户</span></div>
+          <div><b>420+</b><span>签约创作者</span></div>
+        </div>
+      </div>
+      <div class="fmf-hero-art">
+        <img alt="飞魔幻小说网品牌主视觉：星云之下的幻想之门与漂浮书页" src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 480'%3E%3Cdefs%3E%3ClinearGradient id='sky' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%231a1230'/%3E%3Cstop offset='.55' stop-color='%232b2148'/%3E%3Cstop offset='1' stop-color='%235a34b8'/%3E%3C/linearGradient%3E%3CradialGradient id='glow' cx='.5' cy='.5' r='.5'%3E%3Cstop offset='0' stop-color='%23ffd36e' stop-opacity='.85'/%3E%3Cstop offset='1' stop-color='%23ffd36e' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width='640' height='480' fill='url(%23sky)'/%3E%3Ccircle cx='330' cy='210' r='150' fill='url(%23glow)'/%3E%3Cg opacity='.85'%3E%3Ccircle cx='120' cy='80' r='2' fill='%23ffffff'/%3E%3Ccircle cx='210' cy='52' r='1.6' fill='%23c9b3ff'/%3E%3Ccircle cx='480' cy='70' r='2.2' fill='%23ffd36e'/%3E%3Ccircle cx='560' cy='140' r='1.5' fill='%23ffffff'/%3E%3Ccircle cx='70' cy='230' r='1.7' fill='%23b98cff'/%3E%3Ccircle cx='590' cy='300' r='2' fill='%23ffffff'/%3E%3C/g%3E%3Cpath d='M320 150 L400 300 L320 262 L240 300 Z' fill='%23b98cff' opacity='.55'/%3E%3Cpath d='M320 178 L374 288 L320 258 L266 288 Z' fill='%23f4eaff' opacity='.9'/%3E%3Ccircle cx='320' cy='238' r='13' fill='%23ffd36e'/%3E%3Cg stroke='%23b98cff' stroke-opacity='.45' fill='none'%3E%3Cpath d='M120 380 Q260 320 420 388 Q520 420 600 350' stroke-width='2'/%3E%3Cpath d='M90 420 Q250 360 430 425' stroke-width='1.4'/%3E%3C/g%3E%3Cg fill='%23e8dcff' opacity='.92'%3E%3Crect x='150' y='330' width='54' height='70' rx='4' transform='rotate(-8 150 330)'/%3E%3Crect x='230' y='348' width='46' height='62' rx='4' transform='rotate(6 230 348)'/%3E%3Crect x='440' y='336' width='50' height='66' rx='4' transform='rotate(9 440 336)'/%3E%3C/g%3E%3Cg stroke='%236c3fd1' stroke-width='1.5' opacity='.7'%3E%3Cpath d='M158 352 h36'/%3E%3Cpath d='M158 366 h30'/%3E%3Cpath d='M238 368 h32'/%3E%3Cpath d='M448 356 h32'/%3E%3C/g%3E%3C/svg%3E">
+        <div class="fmf-hero-float"><b>本周上新</b>《雾都异闻录》影像篇 · 共 8 集</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 关键词解析 -->
+  <section class="fmf-section fmf-explain" id="fmf-about">
+    <div class="fmf-wrap">
+      <div class="fmf-section-head">
+        <span class="fmf-eyebrow">Brand Insight</span>
+        <h2>关于飞魔幻小说网：一个奇幻文学品牌的影像化路径</h2>
+        <p>从文字阅读到影像表达，我们如何理解并持续建设这座幻想内容的城市。</p>
+      </div>
+      <div class="fmf-explain-grid">
+        <div>
+          <p>飞魔幻小说网是一个以奇幻、幻想文学为核心内容的原创视频品牌。我们并不把自己定义为单一的阅读平台，而是把“故事”放在中心，用影像、访谈、幕后记录、创作者对谈等多元形态，让幻想文学从纸面走向更广阔的表达空间。作为官方网站，这里既承载品牌发布的权威信息，也承载社区日常的活跃讨论。</p>
+          <p>在过去数年的持续运营中，飞魔幻小说网逐步形成了三条清晰的内容线索：其一是原创影像改编，把站内受欢迎的中短篇幻想故事转化为可视化作品；其二是创作者陪伴计划，为写作者、画师、剪辑师提供从脚本到成片的完整支持；其三是行业观察与文化访谈，邀请作者、编辑、影视从业者共同讨论幻想内容的当下与未来。</p>
+          <h3>关键词定位解析</h3>
+          <p>“飞魔幻小说网”这一关键词，指向的是一个兼具文学属性与影像属性的复合品牌。它既让人联想到奇幻小说世界里那些关于魔法、异世界、命运与成长的故事，也指向一个具体可访问的官方网站与内容社区。因此，我们在页面结构与内容组织上，同时照顾两类人群：一类是希望找到高品质幻想内容的读者与观众，另一类是希望被看见、被理解的原创创作者。</p>
+          <p>围绕这一关键词，飞魔幻小说网在企业层面强调正版、原创与匠心制作；在社区层面强调真实、温暖与陪伴；在行业层面强调垂直领域的专业度与影响力。我们不追求短期的流量峰值，而更看重内容生态的长期健康，这也是品牌能够持续获得口碑的基础。</p>
+          <h3>我们提供什么</h3>
+          <p>登录飞魔幻小说网官方网站，用户可以浏览焦点影像、专题企划、创作者档案与品牌动态；创作者可以提交投稿意向、参与年度挑战与报名计划；合作方可以通过官方联系方式对接内容共创、品牌联名与版权合作。所有内容均以高清规格呈现，并标注作者与制作信息，力求让每一次观看都清晰、可信、有出处。</p>
+        </div>
+        <div class="fmf-explain-cards">
+          <div class="fmf-mini-card">
+            <h4>原创优先</h4>
+            <p>坚持以原创为核心的内容策略，尊重每一位作者的署名权与创作节奏，用正版授权与规范流程保护幻想故事的生长空间。</p>
+          </div>
+          <div class="fmf-mini-card">
+            <h4>专业制作</h4>
+            <p>从分镜脚本、视觉设定到成片调色，飞魔幻小说网以专业团队参与关键环节，让幻想题材的影像表达保持稳定品质。</p>
+          </div>
+          <div class="fmf-mini-card">
+            <h4>社区共创</h4>
+            <p>话题征集、投票挑战、作品墙展示，社区成员可以参与内容走向讨论，让品牌与用户之间形成真实的双向陪伴。</p>
+          </div>
+          <div class="fmf-mini-card">
+            <h4>行业连接</h4>
+            <p>通过访谈、圆桌与年鉴企划，飞魔幻小说网持续连接作者、编辑、影视与出版机构，为幻想内容行业积累可复用的经验。</p>
+          </div>
+          <div class="fmf-mini-card">
+            <h4>企业级服务</h4>
+            <p>面向企业与合作品牌提供内容定制、联合企划与创作者对接服务，帮助合作方以更贴近幻想文化的方式触达目标用户。</p>
+          </div>
+          <div class="fmf-mini-card">
+            <h4>真实反馈</h4>
+            <p>每一条评价、每一次收藏与举报都会被认真对待，用户至上是飞魔幻小说网长期坚持的运营原则之一。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 焦点内容 -->
+  <section class="fmf-section" id="fmf-focus">
+    <div class="fmf-wrap">
+      <div class="fmf-section-head">
+        <span class="fmf-eyebrow">Featured</span>
+        <h2>焦点内容：本周值得一看的幻想影像</h2>
+        <p>由编辑团队与社区共同推选，兼顾故事性、制作水准与讨论热度。</p>
+      </div>
+      <div class="fmf-feature-grid">
+        <article class="fmf-vcard">
+          <div class="fmf-vcard-cover">
+            <img alt="《雾都异闻录》影像篇封面：浓雾中的维多利亚街巷与提灯少女" src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 360'%3E%3Cdefs%3E%3ClinearGradient id='fog' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%232b2f4a'/%3E%3Cstop offset='1' stop-color='%23696f8c'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='640' height='360' fill='url(%23fog)'/%3E%3Cg fill='%231a1c2e' opacity='.9'%3E%3Crect x='30' y='120' width='70' height='240'/%3E%3Crect x='110' y='80' width='54' height='280'/%3E%3Crect x='180' y='150' width='64' height='210'/%3E%3Crect x='470' y='100' width='62' height='260'/%3E%3Crect x='545' y='140' width='70' height='220'/%3E%3C/g%3E%3Cg fill='%23ffd36e' opacity='.85'%3E%3Crect x='44' y='150' width='12' height='18'/%3E%3Crect x='124' y='112' width='10' height='16'/%3E%3Crect x='196' y='180' width='11' height='17'/%3E%3Crect x='486' y='132' width='11' height='18'/%3E%3Crect x='562' y='172' width='10' height='16'/%3E%3C/g%3E%3Cpath d='M280 360 L320 220 L360 360 Z' fill='%23b98cff' opacity='.5'/%3E%3Ccircle cx='320' cy='196' r='16' fill='%23ffe6a8'/%3E%3Ccircle cx='320' cy='196' r='30' fill='%23ffd36e' opacity='.22'/%3E%3Cg stroke='%23c9cfe6' stroke-opacity='.35' fill='none'%3E%3Cpath d='M0 290 Q160 250 320 292 Q480 334 640 288' stroke-width='9'/%3E%3Cpath d='M0 326 Q170 292 330 330 Q490 366 640 324' stroke-width='12'/%3E%3C/g%3E%3C/svg%3E">
+            <span class="fmf-vcard-tag">焦点首推</span>
+            <span class="fmf-vcard-play">▶</span>
+          </div>
+          <div class="fmf-vcard-body">
+            <h3>雾都异闻录 · 第一集：提灯人从不回头</h3>
+            <p>改编自站内同名中篇，讲述雾夜里替人寻回遗失记忆的提灯少女。本期影像完整呈现了维多利亚街巷的美术设定与雾效制作过程，并附作者对谈。</p>
+            <div class="fmf-vcard-meta">
+              <span class="fmf-author"><span class="fmf-avatar" style="background:#6c3fd1;">雾</span>雾灯工作室</span>
+              <span>12.8万 次观看</span>
+              <button class="fmf-act" type="button" data-like>👍 点赞</button>
+              <button class="fmf-act" type="button" data-save>☆ 收藏</button>
+              <button class="fmf-act" type="button" data-comment>评论</button>
+            </div>
+          </div>
+        </article>
+        <div class="fmf-feature-side">
+          <article class="fmf-vcard small">
+            <div class="fmf-vcard-cover">
+              <img alt="《星轨图书馆》短片封面：漂浮书架与旋转星轨" src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 360'%3E%3Cdefs%3E%3ClinearGradient id='s2' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%230f1c3a'/%3E%3Cstop offset='1' stop-color='%232b5a9e'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='320' height='360' fill='url(%23s2)'/%3E%3Cg stroke='%23a8d0ff' stroke-width='1.4' fill='none' opacity='.7'%3E%3Cellipse cx='160' cy='150' rx='120' ry='42' transform='rotate(-18 160 150)'/%3E%3Cellipse cx='160' cy='150' rx='86' ry='30' transform='rotate(24 160 150)'/%3E%3C/g%3E%3Cg fill='%23e8dcff' opacity='.9'%3E%3Crect x='86' y='110' width='18' height='76' rx='2'/%3E%3Crect x='110' y='132' width='14' height='54' rx='2'/%3E%3Crect x='190' y='98' width='20' height='88' rx='2'/%3E%3Crect x='216' y='126' width='15' height='60' rx='2'/%3E%3C/g%3E%3Ccircle cx='160' cy='150' r='24' fill='%23ffd36e' opacity='.9'/%3E%3Cg fill='%23ffffff'%3E%3Ccircle cx='52' cy='58' r='1.8'/%3E%3Ccircle cx='272' cy='84' r='2'/%3E%3Ccircle cx='240' cy='300' r='1.6'/%3E%3Ccircle cx='66' cy='286' r='1.9'/%3E%3C/g%3E%3C/svg%3E">
+              <span class="fmf-vcard-play">▶</span>
+            </div>
+            <div class="fmf-vcard-body">
+              <h3>星轨图书馆</h3>
+              <p>在失重书架间寻找一本会移动的书，散文式幻想短片。</p>
+              <div class="fmf-vcard-meta">
+                <span class="fmf-author"><span class="fmf-avatar" style="background:#2b5a9e;">星</span>拾光社</span>
+                <button class="fmf-act" type="button" data-like>👍 点赞</button>
+              </div>
+            </div>
+          </article>
+          <article class="fmf-vcard small">
+            <div class="fmf-vcard-cover">
+              <img alt="《龙眠之谷》幕后纪录封面：山谷薄雾与巨龙鳞片特写" src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 360'%3E%3Cdefs%3E%3ClinearGradient id='g3' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%231d3a2c'/%3E%3Cstop offset='1' stop-color='%234f7a5a'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='320' height='360' fill='url(%23g3)'/%3E%3Cpath d='M0 250 L90 160 L150 220 L220 130 L320 240 L320 360 L0 360 Z' fill='%23213f31'/%3E%3Cpath d='M0 292 L110 220 L190 276 L320 206 L320 360 L0 360 Z' fill='%23162b21'/%3E%3Cg fill='%23c8e6a0' opacity='.85'%3E%3Ccircle cx='120' cy='300' r='5'/%3E%3Ccircle cx='150' cy='322' r='4'/%3E%3Ccircle cx='196' cy='306' r='5'/%3E%3Ccircle cx='232' cy='328' r='3.6'/%3E%3C/g%3E%3Cpath d='M40 360 Q80 250 170 236 Q250 226 284 300' stroke='%23ffd36e' stroke-width='3' fill='none' opacity='.55'/%3E%3Cg stroke='%237fb98d' stroke-width='1.2' fill='none' opacity='.6'%3E%3Cpath d='M30 110 Q90 70 160 108'/%3E%3Cpath d='M150 70 Q220 40 300 84'/%3E%3C/g%3E%3Ccircle cx='258' cy='70' r='16' fill='%23ffd36e' opacity='.7'/%3E%3C/svg%3E">
+              <span class="fmf-vcard-play">▶</span>
+            </div>
+            <div class="fmf-vcard-body">
+              <h3>龙眠之谷：鳞片是怎样做出来的</h3>
+              <p>美术总监拆解巨龙设定，从手绘到材质渲染的完整幕后。</p>
+              <div class="fmf-vcard-meta">
+                <span class="fmf-author"><span class="fmf-avatar" style="background:#4f7a5a;">谷</span>北岭视效</span>
+                <button class="fmf-act" type="button" data-save>☆ 收藏</button>
+              </div>
+            </div>
+          </article>
+          <article class="fmf-vcard small">
+            <div class="fmf-vcard-cover">
+              <img alt="《纸上行者》人物访谈封面：书桌、稿纸与窗边剪影" src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 360'%3E%3Cdefs%3E%3ClinearGradient id='p4' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23f3e6cf'/%3E%3Cstop offset='1' stop-color='%23c9a97e'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='320' height='360' fill='url(%23p4)'/%3E%3Crect x='36' y='60' width='120' height='150' fill='%23fdf6e8' stroke='%23a8814f' stroke-width='3'/%3E%3Cpath d='M36 60 L156 210 M156 60 L36 210' stroke='%23d8bd97' stroke-width='2'/%3E%3Crect x='150' y='230' width='150' height='96' rx='6' fill='%23855f38' opacity='.75'/%3E%3Crect x='166' y='212' width='86' height='20' rx='3' fill='%23fdf6e8'/%3E%3Cpath d='M200 212 L206 180 L250 200 L214 218 Z' fill='%23f5f0e2'/%3E%3Ccircle cx='252' cy='132' r='26' fill='%234a3a26'/%3E%3Cpath d='M226 160 Q252 200 278 160 L278 260 L226 260 Z' fill='%234a3a26' opacity='.85'/%3E%3Cg stroke='%23b08a56' stroke-width='1.6' fill='none' opacity='.7'%3E%3Cpath d='M56 96 h80'/%3E%3Cpath d='M56 118 h64'/%3E%3Cpath d='M56 140 h74'/%3E%3C/g%3E%3C/svg%3E">
+              <span class="fmf-vcard-play">▶</span>
+            </div>
+            <div class="fmf-vcard-body">
+              <h3>纸上行者：写作十五年，我依然相信魔法</h3>
+              <p>与站内签约作者长谈，关于幻想写作的耐心与自我怀疑。</p>
+              <div class="fmf-vcard-meta">
+                <span class="fmf-author"><span class="fmf-avatar" style="background:#a8814f;">纸</span>编辑室</span>
+                <button class="fmf-act" type="button" data-comment>评论</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 视频流 -->
+  <section class="fmf-section alt" id="fmf-stream">
+    <div class="fmf-wrap">
+      <div class="fmf-section-head">
+        <span class="fmf-eyebrow">Video Stream</span>
+        <h2>热门视频流：来自社区的高品质幻想内容</h2>
+        <p>悬浮即可查看卡片动效，点击标签可筛选感兴趣的方向。</p>
+      </div>
+      <div class="fmf-tabs" id="fmfTabs">
+        <button class="fmf-tab on" type="button" data-cat="all">全部</button>
+        <button class="fmf-tab" type="button" data-cat="影像">原创影像</button>
+        <button class="fmf-tab" type="button" data-cat="幕后">创作幕后</button>
+        <button class="fmf-tab" type="button" data-cat="访谈">人物访谈</button>
+        <button class="fmf-tab" type="button" data-cat="科普">知识科普</button>
+      </div>
+      <div class="fmf-stream" id="fmfStream">
+        <article class="fmf-vcard" data-cat="影像">
+          <div class="fmf-vcard-cover">
+            <img alt="《北境雪山信使》封面：雪山之间奔跑的信使与极光" src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 360'%3E%3Cdefs%3E%3ClinearGradient id='sn' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%230d1b33'/%3E%3Cstop offset='.6' stop-color='%2326426b'/%3E%3Cstop offset='1' stop-color='%23c4d6ec'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='640' height='360' fill='url(%23sn)'/%3E%3Cpath d='M0 210 L120 96 L220 200 L330 70 L460 210 L560 120 L640 220 L640 360 L0 360 Z' fill='%23eef4fb' opacity='.92'/%3E%3Cpath d='M0 268 L150 180 L280 262 L420 168 L560 262 L640 220 L640 360 L0 360 Z' fill='%23dbe7f4'/%3E%3Cpath d='M80 120 Q200 40 340 108' stroke='%237de3c0' stroke-width='8' fill='none' opacity='.45'/%3E%3Cpath d='M300 60 Q440 20 580 96' stroke='%23b98cff' stroke-width='7' fill='none' opacity='.4'/%3E%3Cg fill='%23112836'%3E%3Ccircle cx='320' cy='250' r='10'/%3E%3Cpath d='M310 268 L300 320 L312 320 L318 284 L326 320 L338 320 L328 268 Z'/%3E%3C/g%3E%3C/svg%3E">
+            <span class="fmf-vcard-tag">原创影像</span>
+            <span class="fmf-vcard-play">▶</span>
+          </div>
+          <div class="fmf-vcard-body">
+            <h3>北境雪山信使：第七封没有地址的信</h3>
+            <p>一支关于承诺与远行的幻想短片，全程实景与手绘结合，配乐由社区音乐人共创完成，上线三天进入热度榜前十。</p>
+            <div class="fmf-vcard-meta">
+              <span class="fmf-author"><span class="fmf-avatar" style="background:#26426b;">北</span>长夜映像</span>
+              <span>9.6万</span>
+              <button class="fmf-act" type="button" data-like>👍 点赞</button>
+              <button class="fmf-act" type="button" data-save>☆ 收藏</button>
+            </div>
+          </div>
+        </article>
+        <article class="fmf-vcard" data-cat="幕后">
+          <div class="fmf-vcard-cover">
+            <img alt="《幻境档案》幕后制作封面：分镜墙与灯光示意" src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 360'%3E%3Crect width='640' height='360' fill='%23171223'/%3E%3Cg fill='%23f4ead2' opacity='.9'%3E%3Crect x='40' y='46' width='120' height='78' rx='3'/%3E%3Crect x='180' y='46' width='120' height='78' rx='3'/%3E%3Crect x='320' y='46' width='120' height='78' rx='3'/%3E%3Crect x='460' y='46' width='120' height='78' rx='3'/%3E%3C/g%3E%3Cg stroke='%23b98cff' stroke-width='2' fill='none' opacity='.8'%3E%3Cpath d='M62 96 L108 70 L134 100'/%3E%3Cpath d='M196 100 L238 68 L284 104'/%3E%3Cpath d='M338 72 L384 102 L436 70'/%3E%3Cpath d='M478 96 L520 70 L562 100'/%3E%3C/g%3E%3Crect x='40' y='150' width='540' height='6' rx='3' fill='%23ffd36e' opacity='.55'/%3E%3Crect x='40' y='190' width='250' height='120' rx='4' fill='%232a2140'/%3E%3Cg fill='%236c3fd1'%3E%3Crect x='60' y='214' width='40' height='12' rx='3'/%3E%3Crect x='60' y='238' width='86' height='8' rx='3' opacity='.7'/%3E%3Crect x='60' y='256' width='66' height='8' rx='3' opacity='.7'/%3E%3C/g%3E%3Cg fill='%23ffe6a8'%3E%3Crect x='330' y='196' width='34' height='34' rx='4'/%3E%3Crect x='380' y='196' width='34' height='34' rx='4' opacity='.6'/%3E%3Crect x='430' y='196' width='34' height='34' rx='4' opacity='.35'/%3E%3Crect x='480' y='196' width='34' height='34' rx='4' opacity='.18'/%3E%3C/g%3E%3C/svg%3E">
+            <span class="fmf-vcard-tag">创作幕后</span>
+            <span class="fmf-vcard-play">▶</span>
+          </div>
+          <div class="fmf-vcard-body">
+            <h3>幻境档案：我们如何用一盏灯做出三种世界</h3>
+            <p>灯光师带你走进拍摄现场，同一套布光如何通过色温与遮片切换，分别呈现森林、洞窟与王座厅三种氛围。</p>
+            <div class="fmf-vcard-meta">
+              <span class="fmf-author"><span class="fmf-avatar" style="background:#6c3fd1;">幻</span>幻境档案组</span>
+              <span>7.2万</span>
+              <button class="fmf-act" type="button" data-like>👍 点赞</button>
+              <button class="fmf-act" type="button" data-comment>评论</button>
+            </div>
+          </div>
+        </article>
+        <article class="fmf-vcard" data-cat="访谈">
+          <div class="fmf-vcard-cover">
+            <img alt="《翻译魔法的人》访谈封面：双人对话剪影与漂浮字母" src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 360'%3E%3Cdefs%3E%3ClinearGradient id='iv' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2334214f'/%3E%3Cstop offset='1' stop-color='%23a06b8f'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='640' height='360' fill='url(%23iv)'/%3E%3Ccircle cx='238' cy='150' r='52' fill='%23f0d9c0'/%3E%3Cpath d='M186 210 Q238 264 290 210 L308 360 L168 360 Z' fill='%232a1a3d'/%3E%3Ccircle cx='426' cy='164' r='48' fill='%23d9baf0'/%3E%3Cpath d='M378 218 Q426 268 474 218 L490 360 L362 360 Z' fill='%23482e63'/%3E%3Cg fill='%23ffd36e' font-family='serif' font-size='28' opacity='.85'%3E%3Ctext x='120' y='110'%3E%E5%B9%BB%3C/text%3E%3Ctext x='500' y='130'%3E%E5%A2%83%3C/text%3E%3Ctext x='330' y='80'%3E%E8%AF%AD%3C/text%3E%3C/g%3E%3Cg stroke='%23b98cff' stroke-width='1.5' fill='none' opacity='.5'%3E%3Cpath d='M300 210 Q330 180 360 214'/%3E%3Cpath d='M312 246 Q340 274 372 244'/%3E%3C/g%3E%3C/svg%3E">
+            <span class="fmf-vcard-tag">人物访谈</span>
+            <span class="fmf-vcard-play">▶</span>
+          </div>
+          <div class="fmf-vcard-body">
+            <h3>翻译魔法的人：幻想文学编辑的十年手记</h3>
+            <p>从投稿邮箱到成片剧本，一位资深编辑讲述如何判断一个幻想故事是否值得被影像化，以及她眼中的作者成长曲线。</p>
+            <div class="fmf-vcard-meta">
+              <span class="fmf-author"><span class="fmf-avatar" style="background:#a06b8f;">译</span>编辑室</span>
+              <span>5.4万</span>
+              <button class="fmf-act" type="button" data-save>☆ 收藏</button>
+              <button class="fmf-act" type="button" data-comment>评论</button>
+            </div>
+          </div>
+        </article>
+        <article class="fmf-vcard" data-cat="科普">
+          <div class="fmf-vcard-cover">
+            <img alt="《幻想世界的地理课》科普封面：浮空岛与经纬网格" src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 360'%3E%3Cdefs%3E%3ClinearGradient id='geo' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%231f4451'/%3E%3Cstop offset='1' stop-color='%237fd0c4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='640' height='360' fill='url(%23geo)'/%3E%3Cg stroke='%23d9fff6' stroke-opacity='.3' stroke-width='1'%3E%3Cpath d='M0 90 H640 M0 180 H640 M0 270 H640'/%3E%3Cpath d='M160 0 V360 M320 0 V360 M480 0 V360'/%3E%3C/g%3E%3Cellipse cx='330' cy='250' rx='150' ry='30' fill='%230f2b30' opacity='.65'/%3E%3Cpath d='M250 250 L270 170 L390 170 L412 250 Z' fill='%23c9f0e2'/%3E%3Cpath d='M270 190 L300 214 L330 188 L366 216 L390 190' stroke='%236aa895' stroke-width='4' fill='none'/%3E%3Cpath d='M140 120 L180 84 L220 120 L180 156 Z' fill='%23ffd36e' opacity='.8'/%3E%3Ccircle cx='500' cy='104' r='30' fill='%23ffe6a8' opacity='.8'/%3E%3Cpath d='M430 300 Q480 274 540 296' stroke='%23b98cff' stroke-width='3' fill='none' opacity='.7'/%3E%3C/svg%3E">
+            <span class="fmf-vcard-tag">知识科普</span>
+            <span class="fmf-vcard-play">▶</span>
+          </div>
+          <div class="fmf-vcard-body">
+            <h3>幻想世界的地理课：浮空岛的水从哪来</h3>
+            <p>把奇幻设定当成真实地理来推演，这一期讨论浮空岛的气候、水源与人口承载，欢迎在评论区投稿你的世界设定。</p>
+            <div class="fmf-vcard-meta">
+              <span class="fmf-author"><span class="fmf-avatar" style="background:#1f4451;">地</span>设定研究所</span>
+              <span>8.8万</span>
+              <button class="fmf-act" type="button" data-like>👍 点赞</button>
+              <button class="fmf-act" type="button" data-save>☆ 收藏</button>
+            </div>
+          </div>
+        </article>
+        <article class="fmf-vcard" data-cat="影像">
+          <div class="fmf-vcard-cover">
+            <img alt="《钟楼十三响》封面：雨夜钟楼与紫色闪电" src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 360'%3E%3Cdefs%3E%3ClinearGradient id='tw' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23120c22'/%3E%3Cstop offset='1' stop-color='%23453178'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='640' height='360' fill='url(%23tw)'/%3E%3Cg stroke='%23b98cff' stroke-width='1.2' opacity='.35'%3E%3Cpath d='M60 0 L20 360 M160 0 L120 360 M260 0 L220 360 M360 0 L320 360 M460 0 L420 360 M560 0 L520 360'/%3E%3C/g%3E%3Crect x='250' y='120' width='140' height='240' fill='%230d0918'/%3E%3Cpath d='M250 120 L320 40 L390 120 Z' fill='%23150e26'/%3E%3Ccircle cx='320' cy='170' r='22' fill='%23ffd36e'/%3E%3Cpath d='M320 170 L356 170 L340 206 Z' fill='%23150e26'/%3E%3Cpath d='M88 60 L142 132 L112 132 L164 214' stroke='%23fff3c4' stroke-width='5' fill='none'/%3E%3Cg fill='%23c9b3ff' opacity='.8'%3E%3Ccircle cx='120' cy='300' r='2'/%3E%3Ccircle cx='480' cy='250' r='2'/%3E%3Ccircle cx='530' cy='312' r='2'/%3E%3Ccircle cx='460' cy='96' r='2'/%3E%3C/g%3E%3C/svg%3E">
+            <span class="fmf-vcard-tag">原创影像</span>
+            <span class="fmf-vcard-play">▶</span>
+          </div>
+          <div class="fmf-vcard-body">
+            <h3>钟楼十三响：一座城被时间遗忘的那一夜</h3>
+            <p>悬疑向幻想短片，用十三次钟声讲述城中居民各自的秘密。摄影与音效均为原创，已收录进年度精选企划。</p>
+            <div class="fmf-vcard-meta">
+              <span class="fmf-author"><span class="fmf-avatar" style="background:#453178;">十</span>夜航船</span>
+              <span>11.2万</span>
+              <button class="fmf-act" type="button" data-like>👍 点赞</button>
+              <button class="fmf-act" type="button" data-save>☆ 收藏</button>
+            </div>
+          </div>
+        </article>
+        <article class="fmf-vcard" data-cat="幕后">
+          <div class="fmf-vcard-cover">
+            <img alt="《手绘到成片》幕后封面：数位板、色稿与时间轴" src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 360'%3E%3Crect width='640' height='360' fill='%23f6f1e7'/%3E%3Crect x='50' y='60' width='240' height='150' rx='6' fill='%23fdfaf2' stroke='%23c8b79d' stroke-width='3'/%3E%3Cpath d='M90 170 L150 100 L200 150 L244 112' stroke='%236c3fd1' stroke-width='4' fill='none'/%3E%3Crect x='330' y='46' width='260' height='120' rx='6' fill='%23e8e0d2'/%3E%3Cg fill='%23b98cff'%3E%3Crect x='346' y='66' width='60' height='80' rx='3'/%3E%3Crect x='416' y='66' width='60' height='80' rx='3' opacity='.7'/%3E%3Crect x='486' y='66' width='60' height='80' rx='3' opacity='.45'/%3E%3C/g%3E%3Crect x='50' y='240' width='540' height='10' rx='5' fill='%23d8cbb6'/%3E%3Cg fill='%236c3fd1'%3E%3Crect x='50' y='264' width='90' height='26' rx='4' opacity='.8'/%3E%3Crect x='152' y='264' width='140' height='26' rx='4' opacity='.55'/%3E%3Crect x='304' y='264' width='76' height='26' rx='4' opacity='.8'/%3E%3Crect x='392' y='264' width='120' height='26' rx='4' opacity='.4'/%3E%3C/g%3E%3C/svg%3E">
+            <span class="fmf-vcard-tag">创作幕后</span>
+            <span class="fmf-vcard-play">▶</span>
+          </div>
+          <div class="fmf-vcard-body">
+            <h3>手绘到成片：一集 8 分钟短片的 47 张分镜</h3>
+            <p>完整拆解一集幻想短片的制作流程，包括分镜修改、色稿迭代与配乐同步，适合正在准备投稿的创作者参考。</p>
+            <div class="fmf-vcard-meta">
+              <span class="fmf-author"><span class="fmf-avatar" style="background:#c8b79d;color:#4a3a26;">分</span>制作开放日</span>
+              <span>4.9万</span>
+              <button class="fmf-act" type="button" data-save>☆ 收藏</button>
+              <button class="fmf-act" type="button" data-comment>评论</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 专题 -->
+  <section class="fmf-section" id="fmf-topic">
+    <div class="fmf-wrap">
+      <div class="fmf-section-head">
+        <span class="fmf-eyebrow">Special Series</span>
+        <h2>专题企划：把幻想放进具体的生活场景</h2>
+        <p>飞魔幻小说网每季度推出主题企划，邀请创作者围绕同一母题展开影像表达。</p>
+      </div>
+      <div class="fmf-topic-grid">
+        <article class="fmf-topic">
+          <img alt="专题《幻想地理》封面：山脉、河流与地图标注" src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 360'%3E%3Cdefs%3E%3ClinearGradient id='t1' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23e8dcc0'/%3E%3Cstop offset='1' stop-color='%23a8936b'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='640' height='360' fill='url(%23t1)'/%3E%3Cpath d='M0 260 L120 130 L220 240 L320 96 L440 250 L540 160 L640 260 L640 360 L0 360 Z' fill='%238b7550' opacity='.8'/%3E%3Cpath d='M0 300 Q160 250 320 300 Q480 350 640 290' stroke='%236c3fd1' stroke-width='6' fill='none' opacity='.6'/%3E%3Cg stroke='%234a3a26' stroke-width='2' fill='none' opacity='.6'%3E%3Ccircle cx='180' cy='120' r='30'/%3E%3Cpath d='M180 90 V150 M150 120 H210'/%3E%3C/g%3E%3Ccircle cx='460' cy='130' r='9' fill='%236c3fd1'/%3E%3Cpath d='M460 130 L460 86' stroke='%236c3fd1' stroke-width='2'/%3E%3Cpath d='M460 86 L496 98 L460 110 Z' fill='%236c3fd1'/%3E%3C/svg%3E">
+          <div class="fmf-topic-body">
+            <span class="fmf-status"><i></i>更新至 12 期</span>
+            <h3>幻想地理</h3>
+            <p>用纪录片的方式考察虚构世界的地貌与风物，结合真实地理学知识，把设定变得可信可感。</p>
+            <div class="fmf-vcard-meta">
+              <span>企划 · 设定研究所</span>
+              <button class="fmf-act" type="button" data-save>☆ 收藏</button>
+            </div>
+          </div>
+        </article>
+        <article class="fmf-topic">
+          <img alt="专题《纸页之间》封面：翻开的书本与漂浮墨字" src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 360'%3E%3Crect width='640' height='360' fill='%232a2140'/%3E%3Cpath d='M120 300 L120 120 L320 160 L320 340 Z' fill='%23f4ead2'/%3E%3Cpath d='M520 300 L520 120 L320 160 L320 340 Z' fill='%23e3d6ba'/%3E%3Cg stroke='%238a7a58' stroke-width='2' opacity='.7'%3E%3Cpath d='M150 170 L290 196'/%3E%3Cpath d='M150 200 L290 226'/%3E%3Cpath d='M150 230 L260 252'/%3E%3Cpath d='M350 196 L490 170'/%3E%3Cpath d='M350 226 L490 200'/%3E%3C/g%3E%3Cg fill='%23b98cff' opacity='.85'%3E%3Crect x='380' y='70' width='14' height='40' rx='3' transform='rotate(18 380 70)'/%3E%3Crect x='430' y='44' width='12' height='32' rx='3' transform='rotate(-14 430 44)'/%3E%3Crect x='470' y='90' width='10' height='26' rx='3' transform='rotate(26 470 90)'/%3E%3C/g%3E%3Ccircle cx='300' cy='70' r='26' fill='%23ffd36e' opacity='.55'/%3E%3C/svg%3E">
+          <div class="fmf-topic-body">
+            <span class="fmf-status"><i></i>更新至 8 期</span>
+            <h3>纸页之间</h3>
+            <p>走进作者的写作现场，记录稿纸、便签与深夜台灯下的修改痕迹，呈现原创文学真实的生长过程。</p>
+            <div class="fmf-vcard-meta">
+              <span>企划 · 编辑室</span>
+              <button class="fmf-act" type="button" data-save>☆ 收藏</button>
+            </div>
+          </div>
+        </article>
+        <article class="fmf-topic">
+          <img alt="专题《夜行者档案》封面：月光下的长街与影子" src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 360'%3E%3Cdefs%3E%3ClinearGradient id='t3' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%230c1220'/%3E%3Cstop offset='1' stop-color='%23233152'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='640' height='360' fill='url(%23t3)'/%3E%3Ccircle cx='510' cy='84' r='42' fill='%23e9f0ff' opacity='.9'/%3E%3Ccircle cx='524' cy='76' r='12' fill='%23233152' opacity='.3'/%3E%3Cpath d='M0 300 L640 256 L640 360 L0 360 Z' fill='%23161f36'/%3E%3Cg fill='%230a0f1c'%3E%3Crect x='90' y='180' width='56' height='130'/%3E%3Crect x='170' y='150' width='44' height='160'/%3E%3Crect x='430' y='168' width='52' height='140'/%3E%3Crect x='500' y='198' width='60' height='110'/%3E%3C/g%3E%3Cg fill='%23ffd36e' opacity='.7'%3E%3Crect x='102' y='204' width='12' height='18'/%3E%3Crect x='182' y='176' width='10' height='16'/%3E%3Crect x='442' y='192' width='11' height='17'/%3E%3C/g%3E%3Cellipse cx='320' cy='330' rx='70' ry='12' fill='%230a0f1c'/%3E%3Cpath d='M300 330 L300 262 Q320 240 340 262 L340 330 Z' fill='%23b98cff' opacity='.55'/%3E%3C/svg%3E">
+          <div class="fmf-topic-body">
+            <span class="fmf-status"><i></i>更新至 6 期</span>
+            <h3>夜行者档案</h3>
+            <p>城市怪谈与幻想短片的交叉企划，每期跟随一位夜行者在真实城市里寻找虚构故事的入口。</p>
+            <div class="fmf-vcard-meta">
+              <span>企划 · 夜航船</span>
+              <button class="fmf-act" type="button" data-save>☆ 收藏</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 创作者 -->
+  <section class="fmf-section alt" id="fmf-creator">
+    <div class="fmf-wrap">
+      <div class="fmf-section-head">
+        <span class="fmf-eyebrow">Creators</span>
+        <h2>创作者矩阵：让幻想被认真对待的人</h2>
+        <p>飞魔幻小说网持续为原创作者提供制作支持、流量曝光与成长陪伴，点击头像可查看简介。</p>
+      </div>
+      <div class="fmf-creator-grid">
+        <article class="fmf-creator">
+          <span class="fmf-avatar" style="background:#6c3fd1;" data-creator="雾灯工作室">雾</span>
+          <h3>雾灯工作室</h3>
+          <p class="fmf-field">奇幻短片 · 悬疑叙事</p>
+          <p>擅长雾夜、旧城与提灯意象，作品注重氛围与留白，是站内最早一批签约制作团队。</p>
+          <div class="fmf-creator-stats"><div><b>86</b>作品</div><div><b>4.2万</b>关注</div></div>
+        </article>
+        <article class="fmf-creator">
+          <span class="fmf-avatar" style="background:#26426b;" data-creator="长夜映像">北</span>
+          <h3>长夜映像</h3>
+          <p class="fmf-field">雪山冒险 · 自然幻想</p>
+          <p>坚持实景拍摄与手绘结合，镜头里的风雪与极光都来自真实取景地，强调身体感受的真实。</p>
+          <div class="fmf-creator-stats"><div><b>54</b>作品</div><div><b>3.6万</b>关注</div></div>
+        </article>
+        <article class="fmf-creator">
+          <span class="fmf-avatar" style="background:#1f4451;" data-creator="设定研究所">地</span>
+          <h3>设定研究所</h3>
+          <p class="fmf-field">世界构建 · 知识科普</p>
+          <p>把奇幻设定当成课题来研究，用地理、气候与人口逻辑推演虚构世界，深受创作者欢迎。</p>
+          <div class="fmf-creator-stats"><div><b>41</b>作品</div><div><b>5.1万</b>关注</div></div>
+        </article>
+        <article class="fmf-creator">
+          <span class="fmf-avatar" style="background:#a06b8f;" data-creator="编辑室手记">编</span>
+          <h3>编辑室手记</h3>
+          <p class="fmf-field">人物访谈 · 行业观察</p>
+          <p>由编辑团队共同运营，记录作者、译者与从业者的真实处境，为幻想内容行业留下可查的口述档案。</p>
+          <div class="fmf-creator-stats"><div><b>63</b>作品</div><div><b>2.8万</b>关注</div></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 评价 -->
+  <section class="fmf-section" id="fmf-review">
+    <div class="fmf-wrap">
+      <div class="fmf-section-head">
+        <span class="fmf-eyebrow">Community Voice</span>
+        <h2>用户评价：来自社区的真实声音</h2>
+        <p>每条评价都保留原始语气，我们更愿意展示具体细节，而不是漂亮的空话。</p>
+      </div>
+      <div class="fmf-review-grid">
+        <div class="fmf-review">
+          <p>在这里第一次投稿就被编辑认真回复了，指出了我剧本里三处逻辑跳跃，还推荐了两部参考片。这种反馈在别的平台很少见。</p>
+          <div class="fmf-review-user"><span class="fmf-avatar" style="background:#6c3fd1;">林</span>林间写稿人</div>
+        </div>
+        <div class="fmf-review">
+          <p>画面是真的高清，雾都那一集的雾效在手机上看也不糊。孩子跟着我看完还去借了原著小说，算是意外收获。</p>
+          <div class="fmf-review-user"><span class="fmf-avatar" style="background:#26426b;">周</span>周末放映室</div>
+        </div>
+        <div class="fmf-review">
+          <p>专题企划的更新节奏很稳，每周三蹲一次已经成习惯了。希望后面能多做一些幕后技术向的内容。</p>
+          <div class="fmf-review-user"><span class="fmf-avatar" style="background:#1f4451;">阿</span>阿枢</div>
+        </div>
+        <div class="fmf-review">
+          <p>收藏夹和评论区都好用，标签筛选能直接找到幻想地理相关的全部内容，做资料整理很方便。</p>
+          <div class="fmf-review-user"><span class="fmf-avatar" style="background:#a06b8f;">苏</span>苏叶整理中</div>
+        </div>
+        <div class="fmf-review">
+          <p>作为合作方，对接流程比想象中顺畅，需求文档、排期和版权归属都写得很清楚，是值得信赖的团队。</p>
+          <div class="fmf-review-user"><span class="fmf-avatar" style="background:#b98cff;color:#2b2148;">合</span>某文创品牌市场部</div>
+        </div>
+        <div class="fmf-review">
+          <p>不算完美，有些冷门作品播放量低得可惜。但能看到官方在论坛里认真记下建议，愿意等它慢慢变好。</p>
+          <div class="fmf-review-user"><span class="fmf-avatar" style="background:#4f7a5a;">沉</span>沉舟侧畔</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 动态 -->
+  <section class="fmf-section alt" id="fmf-news">
+    <div class="fmf-wrap">
+      <div class="fmf-section-head">
+        <span class="fmf-eyebrow">Official Updates</span>
+        <h2>企业动态：官方发布与内容更新日志</h2>
+        <p>所有品牌层面的重要进展与内容排期，都会在这里持续更新。</p>
+      </div>
+      <div class="fmf-news">
+        <div class="fmf-news-item">
+          <div class="fmf-news-date"><b>18</b><span>11月</span></div>
+          <div>
+            <h3>《幻境档案》第二季影像篇正式上线</h3>
+            <p>本季共 10 集，围绕“记忆与身份”展开，完整制作特辑同步更新于创作幕后栏目。</p>
+          </div>
+        </div>
+        <div class="fmf-news-item">
+          <div class="fmf-news-date"><b>15</b><span>11月</span></div>
+          <div>
+            <h3>年度创作者招募计划开放报名</h3>
+            <p>面向作者、剪辑师与美术从业者，提供制作资源与分成方案，报名截止至 12 月 20 日。</p>
+          </div>
+        </div>
+        <div class="fmf-news-item">
+          <div class="fmf-news-date"><b>11</b><span>11月</span></div>
+          <div>
+            <h3>「幻想地理」专题新增 6 集城市短片</h3>
+            <p>以真实城市为拍摄地，把虚构地图叠合在现实街巷之上，形成可对照的影像笔记。</p>
+          </div>
+        </div>
+        <div class="fmf-news-item">
+          <div class="fmf-news-date"><b>05</b><span>11月</span></div>
+          <div>
+            <h3>社区投稿规则与版权说明更新</h3>
+            <p>进一步明确原创署名、二次改编与商业合作的授权边界，详细条款可在帮助中心查看。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="fmf-section" id="fmf-faq">
+    <div class="fmf-wrap">
+      <div class="fmf-section-head">
+        <span class="fmf-eyebrow">Help Center</span>
+        <h2>常见问题：关于投稿、合作与品牌</h2>
+        <p>若以下内容未能解决你的疑问，可通过页面底部联系方式与团队沟通。</p>
+      </div>
+      <div class="fmf-faq">
+        <details open>
+          <summary>飞魔幻小说网是一个怎样的平台？</summary>
+          <p>飞魔幻小说网是聚焦奇幻与幻想文学的原创视频品牌，官方网站集中展示品牌内容、专题企划、创作者档案与官方动态，同时提供社区互动与投稿入口。</p>
+        </details>
+        <details>
+          <summary>我可以在网站上投稿自己的幻想短片吗？</summary>
+          <p>可以。点击“我要投稿”按钮填写作品信息与版权说明，编辑团队通常会在 7 个工作日内回复初审意见，通过后排期上线并同步署名与制作信息。</p>
+        </details>
+        <details>
+          <summary>站内内容是否标注了作者与制作团队？</summary>
+          <p>所有原创内容均标注作者、制作团队与版权归属，若发现署名遗漏或错误，可通过联系渠道反馈，我们会在核实后及时修正。</p>
+        </details>
+        <details>
+          <summary>品牌是否可以与飞魔幻小说网展开联名合作？</summary>
+          <p>可以。我们提供内容定制、联合企划、创作者对接与品牌专区等形式，合作需求请发送至官方合作邮箱，并附上品牌简介与目标。</p>
+        </details>
+        <details>
+          <summary>如何关注喜欢的创作者并接收更新？</summary>
+          <p>在创作者卡片中点击关注即可，更新动态会在个人中心提示。你也可以通过标签筛选快速找到同类型的幻想内容。</p>
+        </details>
+        <details>
+          <summary>遇到播放异常或页面问题怎么办？</summary>
+          <p>建议先刷新页面或更换网络环境；若问题持续，请通过反馈入口描述具体页面与操作步骤，我们会尽快排查并回复处理结果。</p>
+        </details>
+        <details>
+          <summary>网站内容适合哪些年龄段的观众？</summary>
+          <p>飞魔幻小说网大部分内容适合青少年及以上观众，部分悬疑题材会标注内容提示，家长可结合提示为孩子选择合适的观看内容。</p>
+        </details>
+        <details>
+          <summary>是否有年度评选或比赛活动？</summary>
+          <p>飞魔幻小说网每年举办年度幻想影像评选，设有原创短片、幕后纪录与新人三个方向，具体报名时间与规则会在企业动态中官方发布。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 联系 -->
+  <section class="fmf-section" id="fmf-contact">
+    <div class="fmf-wrap">
+      <div class="fmf-contact">
+        <div>
+          <h2>与飞魔幻小说网一起，把幻想做得更远</h2>
+          <p>无论你是想投稿作品的创作者、希望合作的品牌方，还是只想聊聊某个设定的观众，我们都愿意认真读完你的信息。</p>
+          <div class="fmf-contact-btns">
+            <button class="fmf-btn fmf-btn-primary" type="button" id="fmfSubmitBtn">我要投稿</button>
+            <button class="fmf-btn fmf-btn-ghost" type="button" id="fmfCopyBtn">复制品牌介绍</button>
+            <button class="fmf-btn fmf-btn-ghost" type="button" id="fmfReportBtn">反馈问题</button>
+          </div>
+        </div>
+        <div class="fmf-contact-info">
+          <div><b>官方合作</b>brand@feimohuan.example.cn</div>
+          <div><b>投稿咨询</b>creator@feimohuan.example.cn</div>
+          <div><b>品牌运营中心</b>每周一至周五 10:00 - 18:30</div>
+          <div><b>社区支持</b>站内反馈入口 · 7 个工作日内回复</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="fmf-footer">
+  <div class="fmf-wrap">
+    <div class="fmf-footer-grid">
+      <div class="fmf-footer-brand">
+        <b>飞魔幻小说网</b>
+        <p>飞魔幻小说网官方网站，专注奇幻与幻想文学的原创视频品牌，以专业制作与持续运营，连接作者、观众与合作方，建设值得信赖的幻想内容生态。</p>
+        <p style="color:#7c709c;font-size:12.5px;">品牌持续运营中 · 原创 · 正版 · 高清</p>
+      </div>
+      <div>
+        <h4>内容</h4>
+        <a href="#fmf-focus">焦点内容</a>
+        <a href="#fmf-stream">热门视频流</a>
+        <a href="#fmf-topic">专题企划</a>
+        <a href="#fmf-review">用户评价</a>
+      </div>
+      <div>
+        <h4>品牌</h4>
+        <a href="#fmf-about">品牌解析</a>
+        <a href="#fmf-creator">创作者矩阵</a>
+        <a href="#fmf-news">企业动态</a>
+        <a href="#fmf-faq">帮助中心</a>
+      </div>
+      <div>
+        <h4>联系</h4>
+        <a href="#fmf-contact">合作与投稿</a>
+        <a href="#fmf-contact">问题反馈</a>
+        <a href="#fmf-top">回到顶部</a>
+      </div>
+    </div>
+    <div class="fmf-footer-bottom">
+      <span>飞魔幻小说网官方网站 | 版权所有 © 2026 | 持续运营中</span>
+      <span>原创内容受版权保护 · 内容均为品质精选 · 用户至上</span>
+    </div>
+  </div>
+</footer>
+
+<button class="fmf-fab" id="fmfFab" type="button" aria-label="回到顶部">↑</button>
+
+<div class="fmf-toast" id="fmfToast" role="status" aria-live="polite"></div>
+
+<div class="fmf-modal-mask" id="fmfModalMask">
+  <div class="fmf-modal" role="dialog" aria-modal="true" aria-labelledby="fmfModalTitle">
+    <button class="fmf-modal-close" id="fmfModalClose" type="button" aria-label="关闭">×</button>
+    <h3 id="fmfModalTitle">标题</h3>
+    <div id="fmfModalBody"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var toast = document.getElementById("fmfToast");
+  var toastTimer = null;
+  function showToast(msg){
+    toast.textContent = msg;
+    toast.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toast.classList.remove("show"); }, 2200);
+  }
+
+  /* 移动端导航 */
+  var navToggle = document.getElementById("fmfNavToggle");
+  var nav = document.getElementById("fmfNav");
+  navToggle.addEventListener("click", function(){
+    var open = nav.classList.toggle("open");
+    navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+    navToggle.textContent = open ? "×" : "☰";
+  });
+  nav.addEventListener("click", function(e){
+    if(e.target.tagName === "A"){
+      nav.classList.remove("open");
+      navToggle.setAttribute("aria-expanded","false");
+      navToggle.textContent = "☰";
+    }
+  });
+
+  /* 搜索反馈 */
+  var searchInput = document.getElementById("fmfSearchInput");
+  var searchBtn = document.getElementById("fmfSearchBtn");
+  var searchFeedback = document.getElementById("fmfSearchFeedback");
+  var searchPool = [
+    "雾都异闻录 影像篇","星轨图书馆","龙眠之谷 幕后","幻想地理 专题",
+    "北境雪山信使","幻境档案 第二季","夜行者档案","设定研究所",
+    "纸上行者 访谈","钟楼十三响","手绘到成片","雾灯工作室"
+  ];
+  function doSearch(){
+    var kw = (searchInput.value || "").trim();
+    if(!kw){
+      searchFeedback.textContent = "请输入作品名、专题或创作者昵称，例如「雾都异闻录」。";
+      return;
+    }
+    var hits = searchPool.filter(function(item){ return item.indexOf(kw) > -1; });
+    if(hits.length){
+      searchFeedback.textContent = "找到 " + hits.length + " 条相关结果：" + hits.join("、") + "（示例提示，正式结果以站内索引为准）";
+    }else{
+      searchFeedback.textContent = "暂未找到与「" + kw + "」直接匹配的条目，可尝试缩短关键词或浏览热门视频流。";
+    }
+  }
+  searchBtn.addEventListener("click", doSearch);
+  searchInput.addEventListener("keydown", function(e){
+    if(e.key === "Enter"){ e.preventDefault(); doSearch(); }
+  });
+
+  /* 点赞 / 收藏 / 评论 事件委托 */
+  document.addEventListener("click", function(e){
+    var btn = e.target.closest(".fmf-act");
+    if(!btn) return;
+    if(btn.hasAttribute("data-like")){
+      var liked = btn.classList.toggle("active");
+      var label = btn.textContent.replace(/[0-9]/g,"").trim();
+      btn.textContent = liked ? "👍 已赞" : "👍 点赞";
+      showToast(liked ? "已记录你的喜欢，感谢支持原创内容" : "已取消点赞");
+    }else if(btn.hasAttribute("data-save")){
+      var saved = btn.classList.toggle("saved");
+      btn.textContent = saved ? "★ 已收藏" : "☆ 收藏";
+      showToast(saved ? "已加入收藏，可在个人中心查看" : "已取消收藏");
+    }else if(btn.hasAttribute("data-comment")){
+      openModal("参与讨论", "<p style='margin:0 0 12px;color:#6d6488;font-size:14px;'>留下你对这部作品的看法，优质评论有机会被编辑精选展示在社区首页。</p><textarea rows='4' placeholder='说说你的感受……' id='fmfCommentText'></textarea><div style='margin-top:14px;display:flex;gap:10px;'><button class='fmf-btn fmf-btn-primary' type='button' id='fmfCommentSend'>提交评论</button></div>");
+    }
+  });
+
+  /* 标签筛选 */
+  var tabs = document.getElementById("fmfTabs");
+  var cards = document.querySelectorAll("#fmfStream .fmf-vcard");
+  tabs.addEventListener("click", function(e){
+    var tab = e.target.closest(".fmf-tab");
+    if(!tab) return;
+    tabs.querySelectorAll(".fmf-tab").forEach(function(t){ t.classList.remove("on"); });
+    tab.classList.add("on");
+    var cat = tab.getAttribute("data-cat");
+    var visible = 0;
+    cards.forEach(function(card){
+      var match = cat === "all" || card.getAttribute("data-cat") === cat;
+      card.style.display = match ? "" : "none";
+      if(match) visible++;
+    });
+    showToast("已筛选出 " + visible + " 个视频");
+  });
+
+  /* 弹窗 */
+  var mask = document.getElementById("fmfModalMask");
+  var modalTitle = document.getElementById("fmfModalTitle");
+  var modalBody = document.getElementById("fmfModalBody");
+  function openModal(title, html){
+    modalTitle.textContent = title;
+    modalBody.innerHTML = html;
+    mask.classList.add("show");
+    document.body.style.overflow = "hidden";
+  }
+  function closeModal(){
+    mask.classList.remove("show");
+    document.body.style.overflow = "";
+  }
+  document.getElementById("fmfModalClose").addEventListener("click", closeModal);
+  mask.addEventListener("click", function(e){ if(e.target === mask) closeModal(); });
+  document.addEventListener("keydown", function(e){ if(e.key === "Escape") closeModal(); });
+
+  /* 评论提交 */
+  document.addEventListener("click", function(e){
+    if(e.target && e.target.id === "fmfCommentSend"){
+      var t = document.getElementById("fmfCommentText");
+      if(t && t.value.trim()){
+        closeModal();
+        showToast("评论已提交，将在审核后展示");
+      }else{
+        showToast("请先写下你的评论内容");
+      }
+    }
+  });
+
+  /* 投稿 / 反馈 */
+  document.getElementById("fmfSubmitBtn").addEventListener("click", function(){
+    openModal("投稿入口", "<p style='margin:0 0 12px;color:#6d6488;font-size:14px;'>请留下作品名称与联系方式，编辑团队会主动与你沟通制作与排期事宜。</p><fieldset><input type='text' placeholder='作品名称' id='fmfSubmitName'><input type='email' placeholder='联系邮箱' id='fmfSubmitMail'><textarea rows='3' placeholder='作品简介与版权说明' id='fmfSubmitDesc'></textarea></fieldset><button class='fmf-btn fmf-btn-primary' type='button' id='fmfSubmitSend'>提交意向</button>");
+  });
+  document.addEventListener("click", function(e){
+    if(e.target && e.target.id === "fmfSubmitSend"){
+      var n = document.getElementById("fmfSubmitName");
+      var m = document.getElementById("fmfSubmitMail");
+      if(!n || !n.value.trim() || !m || !m.value.trim()){
+        showToast("请填写作品名称与联系邮箱");
+        return;
+      }
+      closeModal();
+      showToast("投稿意向已提交，我们会尽快联系你");
+    }
+  });
+  document.getElementById("fmfReportBtn").addEventListener("click", function(){
+    openModal("反馈问题", "<p style='margin:0 0 12px;color:#6d6488;font-size:14px;'>描述你遇到的问题页面、操作步骤与期望结果，帮助我们更快定位。</p><textarea rows='4' placeholder='例如：某页面加载较慢，或版权信息有误……' id='fmfReportText'></textarea><div style='margin-top:14px;'><button class='fmf-btn fmf-btn-primary' type='button' id='fmfReportSend'>提交反馈</button></div>");
+  });
+  document.addEventListener("click", function(e){
+    if(e.target && e.target.id === "fmfReportSend"){
+      var r = document.getElementById("fmfReportText");
+      if(!r || !r.value.trim()){
+        showToast("请先描述你遇到的问题");
+        return;
+      }
+      closeModal();
+      showToast("反馈已记录，感谢你的耐心");
+    }
+  });
+
+  /* 复制与分享 */
+  function legacyCopy(text){
+    var ta = document.createElement("textarea");
+    ta.value = text;
+    ta.style.position = "fixed";
+    ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.select();
+    try{ document.execCommand("copy"); }catch(err){}
+    document.body.removeChild(ta);
+  }
+  function copyText(text, okMsg){
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(function(){ showToast(okMsg); }, function(){ legacyCopy(text); showToast(okMsg); });
+    }else{
+      legacyCopy(text);
+      showToast(okMsg);
+    }
+  }
+  document.getElementById("fmfCopyBtn").addEventListener("click", function(){
+    copyText("飞魔幻小说网官方网站：专注奇幻与幻想文学的原创视频品牌，构建值得信赖的幻想内容生态。", "品牌介绍已复制，欢迎分享");
+  });
+  document.getElementById("fmfShareHero").addEventListener("click", function(){
+    copyText("飞魔幻小说网 · 官方网站 · 原创幻想影像品牌", "分享文案已复制，可粘贴到微信或微博");
+  });
+
+  /* 创作者弹窗 */
+  document.querySelectorAll("[data-creator]").forEach(function(el){
+    el.style.cursor = "pointer";
+    el.addEventListener("click", function(){
+      var name = el.getAttribute("data-creator");
+      openModal(name, "<p style='margin:0 0 12px;color:#6d6488;font-size:14px;'>"+name+" 是飞魔幻小说网签约创作者之一，长期参与原创影像与专题企划制作。关注后可第一时间收到更新提醒，也可以在评论区与其交流创作细节。</p><button class='fmf-btn fmf-btn-primary' type='button' id='fmfFollowAuthor'>关注创作者</button>");
+    });
+  });
+  document.addEventListener("click", function(e){
+    if(e.target && e.target.id === "fmfFollowAuthor"){
+      closeModal();
+      showToast("已关注创作者，更新将在个人中心提示");
+    }
+  });
+
+  /* 回到顶部 */
+  var fab = document.getElementById("fmfFab");
+  window.addEventListener("scroll", function(){
+    if(window.scrollY > 560){ fab.classList.add("show"); }else{ fab.classList.remove("show"); }
+  }, {passive:true});
+  fab.addEventListener("click", function(){ window.scrollTo({top:0,behavior:"smooth"}); });
+
+})();
+</script>
+</body>
+            </html>
